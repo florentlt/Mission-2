@@ -15,17 +15,19 @@ namespace Connecte
     public partial class Insertion : Form
     {
         private Liaison l;
+        private string idSect;
         Mgr monManager;
         List<Liaison> lstLiaison;
         List<Port> lstPort;
-        public Insertion(Liaison uneLiaison = null)
+        public Insertion(string idSecteur, Liaison uneLiaison = null)
         {
             InitializeComponent();
             monManager = new Mgr();
-            if (uneLiaison != null)
+            if (uneLiaison != null )
             {
                 this.l = uneLiaison;
             }
+            this.idSect = idSecteur;
         }
 
         private void Insertion_Load(object sender, EventArgs e)
@@ -47,7 +49,7 @@ namespace Connecte
                 cBPortDepart.Enabled = true;
                 cBPortArrivee.Enabled = true;
 
-                TextBoxSecteur.Text = l.IdSecteur;
+                TextBoxSecteur.Text = idSect;
 
                 lstPort = monManager.chargementPortBD();
                 foreach (Port port in lstPort)
@@ -74,7 +76,6 @@ namespace Connecte
             }
             this.Close();
         }
-   
 
-        }
+    }
     }

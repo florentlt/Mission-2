@@ -84,6 +84,7 @@ namespace Connecte.DAL
             }
         }
 
+
         // Récupération de la liste des liaisons
         public static List<Liaison> getLiaisons()
         {
@@ -123,6 +124,7 @@ namespace Connecte.DAL
                     ll.Add(l);
 
 
+
                 }
 
                 reader.Close();
@@ -144,6 +146,7 @@ namespace Connecte.DAL
 
 
         }
+
         public static List<Liaison> getLiaisonsSecteur(Secteur unSecteur)
         {
 

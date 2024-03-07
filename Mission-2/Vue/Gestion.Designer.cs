@@ -36,6 +36,8 @@
             this.buttonSupprimer = new System.Windows.Forms.Button();
             this.buttonLiaison = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelNombreLiaisons = new System.Windows.Forms.Label();
+            this.listBoxTraversee = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -61,6 +63,7 @@
             this.listBoxLiaison.Name = "listBoxLiaison";
             this.listBoxLiaison.Size = new System.Drawing.Size(544, 324);
             this.listBoxLiaison.TabIndex = 1;
+            this.listBoxLiaison.SelectedIndexChanged += new System.EventHandler(this.listBoxLiaison_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -81,7 +84,7 @@
             this.buttonModifier.Name = "buttonModifier";
             this.buttonModifier.Size = new System.Drawing.Size(176, 49);
             this.buttonModifier.TabIndex = 0;
-            this.buttonModifier.Text = "Modifier la liaison sélectionnée";
+            this.buttonModifier.Text = "Modifier la durée de la liaison sélectionnée";
             this.buttonModifier.UseVisualStyleBackColor = true;
             this.buttonModifier.Click += new System.EventHandler(this.buttonModifier_Click_1);
             // 
@@ -122,20 +125,39 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.buttonLiaison);
-            this.groupBox3.Location = new System.Drawing.Point(1168, 105);
+            this.groupBox3.Location = new System.Drawing.Point(1210, 422);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.groupBox3.Size = new System.Drawing.Size(143, 172);
+            this.groupBox3.Size = new System.Drawing.Size(143, 145);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Insertion";
             // 
+            // labelNombreLiaisons
+            // 
+            this.labelNombreLiaisons.AutoSize = true;
+            this.labelNombreLiaisons.Location = new System.Drawing.Point(511, 145);
+            this.labelNombreLiaisons.Name = "labelNombreLiaisons";
+            this.labelNombreLiaisons.Size = new System.Drawing.Size(44, 16);
+            this.labelNombreLiaisons.TabIndex = 7;
+            this.labelNombreLiaisons.Text = "label1";
+            // 
+            // listBoxTraversee
+            // 
+            this.listBoxTraversee.FormattingEnabled = true;
+            this.listBoxTraversee.ItemHeight = 16;
+            this.listBoxTraversee.Location = new System.Drawing.Point(1210, 36);
+            this.listBoxTraversee.Name = "listBoxTraversee";
+            this.listBoxTraversee.Size = new System.Drawing.Size(264, 324);
+            this.listBoxTraversee.TabIndex = 8;            // 
             // Gestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1543, 614);
+            this.Controls.Add(this.listBoxTraversee);
+            this.Controls.Add(this.labelNombreLiaisons);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -149,6 +171,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -162,6 +185,8 @@
         private System.Windows.Forms.Button buttonSupprimer;
         private System.Windows.Forms.Button buttonLiaison;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label labelNombreLiaisons;
+        private System.Windows.Forms.ListBox listBoxTraversee;
     }
 }
 

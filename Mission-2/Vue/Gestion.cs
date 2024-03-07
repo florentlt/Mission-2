@@ -17,22 +17,20 @@ namespace Connecte
         Mgr monManager;
         List<Secteur> lstSecteur = new List<Secteur>();
         List<Liaison> lstLiaison = new List<Liaison>();
+        List<Traversee> lstTraversee = new List<Traversee>();
+
+
         public Gestion()
         {
             InitializeComponent();
             monManager = new Mgr();
         }
 
+
         private void Gestion_Load(object sender, EventArgs e)
         {
             lstSecteur = monManager.chargementSecteurBD();
             afficherSecteur();
-        }
-
-        private void listBoxSecteur_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-
         }
   
         public void afficherLiaison()
@@ -42,6 +40,7 @@ namespace Connecte
                 listBoxLiaison.DataSource = null;
                 listBoxLiaison.DataSource = lstLiaison;
                 listBoxLiaison.DisplayMember = "Description";
+                labelNombreLiaisons.Text = lstLiaison.Count.ToString();
             }
 
             catch (Exception ex)
@@ -64,11 +63,28 @@ namespace Connecte
             }
         }
 
+        public void afficherTraversee()
+        {
+            try
+            {
+                listBoxTraversee.DataSource = null;
+                listBoxTraversee.DataSource = lstTraversee;
+                listBoxTraversee.DisplayMember = "Description";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+        }
+
+
+
         private void buttonLiaison_Click(object sender, EventArgs e)
         {
             int compte = lstLiaison.Count();
             Liaison uneLiaison = (Liaison)listBoxLiaison.SelectedItem;
-            Insertion insertion = new Insertion();
+            Insertion insertion = new Insertion(uneLiaison.IdSecteur);
             insertion.ShowDialog();
             if (lstLiaison.Count() > compte)
             {
@@ -81,7 +97,7 @@ namespace Connecte
         private void buttonModifier_Click_1(object sender, EventArgs e)
         {
             Liaison uneLiaison = (Liaison)listBoxLiaison.SelectedItem;
-            Insertion insertion = new Insertion(uneLiaison);
+            Insertion insertion = new Insertion(uneLiaison.IdSecteur, uneLiaison);
             insertion.ShowDialog();
             if (uneLiaison != listBoxLiaison.SelectedItem)
             {
@@ -108,5 +124,14 @@ namespace Connecte
 
         }
 
+        private void listBoxLiaison_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Liaison uneLiaison = (Liaison)listBoxLiaison.SelectedItem;
+            if (uneLiaison != null)
+            {
+                lstTraversee = monManager.chargementTraverseeLiaisonBD(uneLiaison);
+                afficherTraversee();
+            } 
+        }
     }
 }

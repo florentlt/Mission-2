@@ -17,6 +17,7 @@ namespace Connecte.Controleur
         List<Liaison> maListeLiaison;
         List<Secteur> maListeSecteur;
         List<Port> maListePort;
+        List<Traversee> maListeTraversee;
 
         public Mgr()
         {
@@ -34,6 +35,9 @@ namespace Connecte.Controleur
 
             return (maListeLiaison);
         }
+
+        // Récupération du nombre de Liaisons à partir de la DAL
+
         public List<Liaison> chargementLiaisonSecteurBD(Secteur unSecteur)
         {
 
@@ -61,6 +65,17 @@ namespace Connecte.Controleur
             return (maListePort);
         }
 
+        // Récupération de la liste des Traversees à partir de la DAL
+        public List<Traversee> chargementTraverseeLiaisonBD(Liaison uneLiaison)
+        {
+
+            maListeTraversee = TraverseeDAO.getTraverseeLiaisons(uneLiaison);
+
+            return (maListeTraversee);
+        }
+
+
+
         // Mise à jour d'une Liason  dans la DAL
         public void updateLiaison(Liaison l)
         {
@@ -75,6 +90,7 @@ namespace Connecte.Controleur
             LiaisonDAO.deleteLiaison(l);
 
         }
+        
 
         // Insertion d'une liaison dans la DAL
         public void createLiaison(string idLiaison, string idSecteur,string idPortDepart, string idPortArrivee, string duree)
